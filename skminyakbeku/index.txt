@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal rasmi Sekolah Kebangsaan Minyak Beku, Batu Pahat, Johor.">
+  <title>Portal Rasmi SK Minyak Beku</title>
+  <link rel="icon" href="images/logo-sekolah.svg" type="image/svg+xml">
+
+  <style>
+    /* =========================================================
+       EDIT WARNA WEBSITE DI SINI
+       Tukar kod warna sahaja jika mahu ubah tema.
+    ========================================================= */
+    :root {
+      --biru-gelap: #102f50;
+      --biru: #1f5fae;
+      --biru-cerah: #eaf2fb;
+      --kuning: #f6c95f;
+      --putih: #ffffff;
+      --latar: #f5f7fa;
+      --teks: #172b40;
+      --teks-lembut: #617083;
+      --garis: #dbe3ec;
+      --bayang: 0 18px 50px rgba(16, 47, 80, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--teks);
+      background: var(--latar);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    h1, h2, h3 { margin: 0; line-height: 1.18; }
+    p { margin: 0 0 1rem; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: auto; }
+    .skip-link { position: fixed; left: -999px; top: 12px; z-index: 999; }
+    .skip-link:focus { left: 12px; padding: 10px 14px; background: white; border-radius: 8px; }
+
+    .announcement { background: var(--kuning); color: var(--biru-gelap); font-size: .9rem; font-weight: 700; }
+    .announcement .container { display: flex; justify-content: center; gap: 10px; padding: 8px 0; text-align: center; }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--garis); backdrop-filter: blur(10px); }
+    .navbar { min-height: 88px; display: flex; align-items: center; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 13px; margin-right: auto; }
+    .brand img { width: 56px; height: 56px; object-fit: contain; }
+    .brand strong { display: block; color: var(--biru-gelap); font-size: 1.05rem; }
+    .brand small { display: block; color: var(--teks-lembut); font-size: .76rem; letter-spacing: .08em; }
+    nav { display: flex; align-items: center; gap: 22px; }
+    nav a { color: var(--teks-lembut); font-size: .92rem; font-weight: 700; }
+    nav a:hover { color: var(--biru); }
+    .menu-button { display: none; border: 1px solid var(--garis); background: white; padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--biru-gelap); color: white; padding: 12px 18px; border-radius: 9px; font-weight: 700; }
+    .button:hover { background: var(--biru); }
+    .button.yellow { background: var(--kuning); color: var(--biru-gelap); }
+    .button.outline { background: transparent; border: 1px solid rgba(255,255,255,.45); color: white; }
+
+    .hero { padding: 42px 0 28px; }
+    .hero-box { min-height: 570px; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: 1.1fr .9fr; background: var(--biru-gelap); box-shadow: var(--bayang); }
+    .hero-copy { padding: clamp(34px, 6vw, 72px); display: flex; flex-direction: column; justify-content: center; color: white; }
+    .eyebrow { display: inline-block; color: var(--biru); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 14px; }
+    .hero .eyebrow { color: var(--kuning); }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); letter-spacing: -.05em; margin-bottom: 22px; }
+    .hero h1 span { color: var(--kuning); }
+    .hero p { max-width: 600px; color: #d4e1ee; font-size: 1.05rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .hero-image { position: relative; min-height: 420px; background: #dce7f2; }
+    .hero-image img { height: 100%; object-fit: cover; }
+    .image-label { position: absolute; bottom: 18px; left: 18px; right: 18px; padding: 12px 14px; background: rgba(16,47,80,.88); color: white; border-radius: 9px; font-size: .84rem; }
+
+    .quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 10px 0 70px; }
+    .quick-link { background: white; border: 1px solid var(--garis); border-radius: 14px; padding: 20px; display: flex; align-items: center; gap: 14px; transition: .2s ease; }
+    .quick-link:hover { transform: translateY(-3px); border-color: var(--biru); box-shadow: var(--bayang); }
+    .quick-icon { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 10px; background: var(--biru-cerah); color: var(--biru); font-weight: 900; }
+    .quick-link strong, .quick-link small { display: block; }
+    .quick-link small { color: var(--teks-lembut); font-size: .78rem; }
+
+    section { scroll-margin-top: 105px; }
+    .section { padding: 68px 0; }
+    .section.white { background: white; }
+    .section.dark { background: var(--biru-gelap); color: white; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 30px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 3.5vw, 2.7rem); letter-spacing: -.035em; }
+    .section-heading p { max-width: 550px; color: var(--teks-lembut); margin: 0; }
+    .dark .section-heading p { color: #c7d7e7; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card { background: white; border: 1px solid var(--garis); border-radius: 16px; overflow: hidden; }
+    .card-body { padding: 22px; }
+    .card h3 { margin-bottom: 10px; font-size: 1.12rem; }
+    .card p { color: var(--teks-lembut); font-size: .93rem; }
+    .card-image { aspect-ratio: 16 / 10; object-fit: cover; background: #e7edf4; }
+    .tag { display: inline-block; background: var(--biru-cerah); color: var(--biru); border-radius: 6px; padding: 4px 9px; font-size: .75rem; font-weight: 800; margin-bottom: 12px; }
+    .date { color: var(--teks-lembut); font-size: .8rem; }
+
+    .profile { text-align: center; padding: 22px; }
+    .profile img { width: 130px; height: 130px; border-radius: 50%; margin: 0 auto 17px; object-fit: cover; background: #e7edf4; }
+    .profile .role { color: var(--biru); font-size: .86rem; font-weight: 700; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #315170; border-radius: 16px; overflow: hidden; margin-top: 35px; }
+    .stat { padding: 25px; background: var(--biru-gelap); text-align: center; }
+    .stat strong { display: block; color: var(--kuning); font-size: 2rem; }
+    .stat span { color: #cfdfed; font-size: .86rem; }
+
+    .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, 210px); gap: 14px; }
+    .gallery figure { margin: 0; overflow: hidden; border-radius: 14px; position: relative; background: #e6edf5; }
+    .gallery figure:first-child { grid-row: 1 / 3; }
+    .gallery img { height: 100%; object-fit: cover; }
+    .gallery figcaption { position: absolute; inset: auto 12px 12px; padding: 8px 10px; border-radius: 7px; background: rgba(16,47,80,.84); color: white; font-size: .78rem; }
+
+    .contact-box { padding: 40px; background: white; color: var(--teks); border-radius: 18px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 35px; }
+    .contact-list { display: grid; gap: 11px; margin-top: 22px; }
+    .contact-item { padding: 12px 0; border-bottom: 1px solid var(--garis); }
+    .placeholder-note { border: 1px dashed #aebdcb; background: #f8fafc; color: var(--teks-lembut); border-radius: 10px; padding: 15px; font-size: .86rem; }
+    footer { background: #0b233b; color: #c6d5e3; padding: 36px 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 35px; }
+    footer strong { color: white; }
+    footer small { display: block; margin-top: 22px; color: #91a8bd; }
+
+    @media (max-width: 980px) {
+      .menu-button { display: block; }
+      nav { display: none; position: absolute; top: 88px; left: 0; right: 0; padding: 20px; background: white; border-bottom: 1px solid var(--garis); flex-direction: column; align-items: stretch; }
+      nav.open { display: flex; }
+      .hero-box { grid-template-columns: 1fr; }
+      .hero-image { min-height: 360px; }
+      .quick-links, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .contact-box { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .announcement { font-size: .78rem; }
+      .brand small { display: none; }
+      .hero { padding-top: 20px; }
+      .hero-copy { padding: 34px 24px; }
+      .hero-image { min-height: 280px; }
+      .quick-links { grid-template-columns: 1fr 1fr; margin-bottom: 40px; }
+      .quick-link { padding: 14px; }
+      .grid-2, .grid-3, .grid-4, .stats, .footer-grid { grid-template-columns: 1fr; }
+      .section { padding: 48px 0; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 270px 170px 170px; }
+      .gallery figure:first-child { grid-column: 1 / 3; grid-row: auto; }
+      .contact-box { padding: 25px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#kandungan">Terus ke kandungan</a>
+
+  <!-- =========================================================
+       EDIT PENGUMUMAN RINGKAS DI SINI
+  ========================================================== -->
+  <div class="announcement">
+    <div class="container">📢 <span>PLACEHOLDER: Tulis pengumuman penting sekolah di sini.</span></div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <!-- EDIT LOGO: gantikan images/logo-sekolah.svg dengan fail logo sekolah -->
+      <a class="brand" href="#utama" aria-label="Laman utama SK Minyak Beku">
+        <img src="images/logo-sekolah.svg" alt="Logo SK Minyak Beku">
+        <span>
+          <strong>SK Minyak Beku</strong>
+          <small>BATU PAHAT · JOHOR</small>
+        </span>
+      </a>
+
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+      <nav id="mainNav" aria-label="Menu utama">
+        <a href="#utama">Utama</a>
+        <a href="#sekolah">Sekolah</a>
+        <a href="#warga">Warga</a>
+        <a href="#berita">Berita</a>
+        <a href="#pencapaian">Pencapaian</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#hubungi">Hubungi</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="kandungan">
+    <section class="hero" id="utama">
+      <div class="container hero-box">
+        <div class="hero-copy">
+          <span class="eyebrow">Selamat datang ke portal rasmi</span>
+          <!-- EDIT TAJUK DAN PENERANGAN UTAMA DI SINI -->
+          <h1>Ilmu dipupuk.<br><span>Potensi dibentuk.</span></h1>
+          <p>PLACEHOLDER: Tulis pengenalan ringkas sekolah, keistimewaan SK Minyak Beku atau mesej alu-aluan di sini.</p>
+          <div class="hero-actions">
+            <a class="button yellow" href="#berita">Berita terkini</a>
+            <a class="button outline" href="#sekolah">Kenali sekolah</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <!-- EDIT GAMBAR UTAMA: gantikan fail images/gambar-utama.svg -->
+          <img src="images/gambar-utama.svg" alt="Placeholder gambar utama sekolah">
+          <div class="image-label">PLACEHOLDER GAMBAR UTAMA · Cadangan saiz 1600 × 1200 px</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDIT PAUTAN PANTAS: tukar nilai href kepada URL rasmi -->
+    <div class="container quick-links" aria-label="Pautan pantas">
+      <a class="quick-link" href="https://idme.moe.gov.my/" target="_blank" rel="noopener">
+        <span class="quick-icon">i</span><span><strong>idMe</strong><small>Portal identiti KPM ↗</small></span>
+      </a>
+      <a class="quick-link" href="https://d2.delima.edu.my/" target="_blank" rel="noopener">
+        <span class="quick-icon">D</span><span><strong>DELIMa</strong><small>Pembelajaran digital ↗</small></span>
+      </a>
+      <a class="quick-link" href="https://hrmis2.eghrmis.gov.my/" target="_blank" rel="noopener">
+        <span class="quick-icon">H</span><span><strong>HRMIS</strong><small>Sumber manusia ↗</small></span>
+      </a>
+      <a class="quick-link" href="#" title="Aktifkan pautan pada fasa sistem dalaman">
+        <span class="quick-icon">S</span><span><strong>Sistem SKMB</strong><small>Fasa seterusnya</small></span>
+      </a>
+    </div>
+
+    <section class="section white" id="sekolah">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Tentang kami</span><h2>Kenali SK Minyak Beku</h2></div>
+          <p>PLACEHOLDER: Masukkan ringkasan tentang sekolah, komuniti, sejarah atau fokus pendidikan SKMB.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <!-- EDIT GAMBAR SEKOLAH -->
+            <img class="card-image" src="images/gambar-sekolah.svg" alt="Placeholder gambar bangunan sekolah">
+            <div class="card-body">
+              <span class="tag">Profil sekolah</span>
+              <h3>Sekolah Kebangsaan Minyak Beku</h3>
+              <p>PLACEHOLDER: Tulis sejarah penubuhan, latar belakang dan maklumat penting sekolah di sini.</p>
+            </div>
+          </article>
+          <div class="grid-2">
+            <article class="card"><div class="card-body"><span class="tag">Visi</span><h3>Visi sekolah</h3><p>PLACEHOLDER: Masukkan visi rasmi sekolah.</p></div></article>
+            <article class="card"><div class="card-body"><span class="tag">Misi</span><h3>Misi sekolah</h3><p>PLACEHOLDER: Masukkan misi rasmi sekolah.</p></div></article>
+            <article class="card"><div class="card-body"><span class="tag">Moto</span><h3>Moto sekolah</h3><p>PLACEHOLDER: Masukkan moto rasmi sekolah.</p></div></article>
+            <article class="card"><div class="card-body"><span class="tag">Haluan</span><h3>Fokus sekolah</h3><p>PLACEHOLDER: Masukkan fokus atau bidang utama sekolah.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-label="Statistik sekolah">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">SKMB dalam angka</span><h2>Komuniti sekolah</h2></div>
+          <p>EDIT: Gantikan semua angka dengan data semasa sekolah.</p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>000</strong><span>Jumlah murid</span></div>
+          <div class="stat"><strong>00</strong><span>Guru</span></div>
+          <div class="stat"><strong>00</strong><span>Staf sokongan</span></div>
+          <div class="stat"><strong>00</strong><span>Kelas</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="warga">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Warga sekolah</span><h2>Barisan pentadbir</h2></div>
+          <p>EDIT: Tukar nama, jawatan dan fail gambar. Salin kad jika mahu menambah lebih ramai warga sekolah.</p>
+        </div>
+        <div class="grid-4">
+          <!-- EDIT KAD GURU 1 -->
+          <article class="card profile"><img src="images/guru-1.svg" alt="Placeholder foto Guru Besar"><h3>NAMA GURU BESAR</h3><div class="role">Guru Besar</div></article>
+          <!-- EDIT KAD GURU 2 -->
+          <article class="card profile"><img src="images/guru-2.svg" alt="Placeholder foto PK Pentadbiran"><h3>NAMA PK PENTADBIRAN</h3><div class="role">Penolong Kanan Pentadbiran</div></article>
+          <!-- EDIT KAD GURU 3 -->
+          <article class="card profile"><img src="images/guru-3.svg" alt="Placeholder foto PK HEM"><h3>NAMA PK HEM</h3><div class="role">Penolong Kanan Hal Ehwal Murid</div></article>
+          <!-- EDIT KAD GURU 4 -->
+          <article class="card profile"><img src="images/guru-4.svg" alt="Placeholder foto PK Kokurikulum"><h3>NAMA PK KOKURIKULUM</h3><div class="role">Penolong Kanan Kokurikulum</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="berita">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Perkembangan sekolah</span><h2>Berita & aktiviti</h2></div>
+          <p>EDIT: Gantikan gambar, tarikh, tajuk dan penerangan. Salin satu kad untuk menambah berita.</p>
+        </div>
+        <div class="grid-3">
+          <!-- EDIT BERITA 1 -->
+          <article class="card"><img class="card-image" src="images/berita-1.svg" alt="Placeholder berita pertama"><div class="card-body"><span class="tag">Aktiviti</span><h3>TAJUK BERITA PERTAMA</h3><p>PLACEHOLDER: Ringkasan berita atau aktiviti sekolah.</p><span class="date">00 Bulan 2026</span></div></article>
+          <!-- EDIT BERITA 2 -->
+          <article class="card"><img class="card-image" src="images/berita-2.svg" alt="Placeholder berita kedua"><div class="card-body"><span class="tag">Program</span><h3>TAJUK BERITA KEDUA</h3><p>PLACEHOLDER: Ringkasan berita atau aktiviti sekolah.</p><span class="date">00 Bulan 2026</span></div></article>
+          <!-- EDIT BERITA 3 -->
+          <article class="card"><img class="card-image" src="images/berita-3.svg" alt="Placeholder berita ketiga"><div class="card-body"><span class="tag">Sekolah</span><h3>TAJUK BERITA KETIGA</h3><p>PLACEHOLDER: Ringkasan berita atau aktiviti sekolah.</p><span class="date">00 Bulan 2026</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pencapaian">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Kebanggaan SKMB</span><h2>Pencapaian sekolah</h2></div>
+          <p>EDIT: Gunakan ruang ini untuk pencapaian murid, guru, akademik, sukan atau kokurikulum.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><img class="card-image" src="images/pencapaian-1.svg" alt="Placeholder pencapaian pertama"><div class="card-body"><span class="tag">Peringkat ______</span><h3>TAJUK PENCAPAIAN PERTAMA</h3><p>PLACEHOLDER: Nama peserta, kedudukan dan pertandingan.</p></div></article>
+          <article class="card"><img class="card-image" src="images/pencapaian-2.svg" alt="Placeholder pencapaian kedua"><div class="card-body"><span class="tag">Peringkat ______</span><h3>TAJUK PENCAPAIAN KEDUA</h3><p>PLACEHOLDER: Nama peserta, kedudukan dan pertandingan.</p></div></article>
+          <article class="card"><img class="card-image" src="images/pencapaian-3.svg" alt="Placeholder pencapaian ketiga"><div class="card-body"><span class="tag">Peringkat ______</span><h3>TAJUK PENCAPAIAN KETIGA</h3><p>PLACEHOLDER: Nama peserta, kedudukan dan pertandingan.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="galeri">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Lensa SKMB</span><h2>Galeri sekolah</h2></div>
+          <p>EDIT: Gantikan lima fail gambar galeri. Foto utama sesuai menggunakan gambar landskap.</p>
+        </div>
+        <div class="gallery">
+          <figure><img src="images/galeri-1.svg" alt="Placeholder galeri utama"><figcaption>PLACEHOLDER KAPSYEN 1</figcaption></figure>
+          <figure><img src="images/galeri-2.svg" alt="Placeholder galeri kedua"><figcaption>KAPSYEN 2</figcaption></figure>
+          <figure><img src="images/galeri-3.svg" alt="Placeholder galeri ketiga"><figcaption>KAPSYEN 3</figcaption></figure>
+          <figure><img src="images/galeri-4.svg" alt="Placeholder galeri keempat"><figcaption>KAPSYEN 4</figcaption></figure>
+          <figure><img src="images/galeri-5.svg" alt="Placeholder galeri kelima"><figcaption>KAPSYEN 5</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="hubungi">
+      <div class="container contact-box">
+        <div>
+          <span class="eyebrow">Hubungi sekolah</span>
+          <h2>SK Minyak Beku</h2>
+          <div class="contact-list">
+            <!-- EDIT MAKLUMAT HUBUNGAN DI SINI -->
+            <div class="contact-item"><strong>Alamat</strong><br>PLACEHOLDER: Alamat penuh sekolah, Batu Pahat, Johor</div>
+            <div class="contact-item"><strong>Telefon</strong><br>00-000 0000</div>
+            <div class="contact-item"><strong>E-mel</strong><br>email-sekolah@contoh.edu.my</div>
+            <div class="contact-item"><strong>Waktu pejabat</strong><br>PLACEHOLDER: Isnin–Jumaat, 0.00 pagi–0.00 petang</div>
+          </div>
+        </div>
+        <div>
+          <h3>Aduan & maklum balas</h3>
+          <p>PLACEHOLDER: Tulis arahan ringkas untuk ibu bapa dan komuniti.</p>
+          <div class="placeholder-note">Fasa 1: Tukar pautan butang di bawah kepada Google Form atau saluran rasmi sekolah. Borang bersepadu akan dibuat pada fasa seterusnya.</div>
+          <!-- EDIT PAUTAN BORANG: gantikan # dengan URL Google Form -->
+          <a class="button" style="margin-top:16px" href="#">Buka borang maklum balas ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><strong>Sekolah Kebangsaan Minyak Beku</strong><p>PLACEHOLDER: Moto atau kenyataan ringkas sekolah.</p></div>
+      <div><strong>Pautan</strong><p><a href="#sekolah">Profil sekolah</a> · <a href="#berita">Berita</a> · <a href="#hubungi">Hubungi</a></p></div>
+    </div>
+    <div class="container"><small>© <span id="tahun"></span> SK Minyak Beku. Hak cipta terpelihara.</small></div>
+  </footer>
+
+  <script>
+    // JavaScript ringkas untuk menu telefon dan tahun semasa.
+    const menuButton = document.getElementById('menuButton');
+    const mainNav = document.getElementById('mainNav');
+    menuButton.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('tahun').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
